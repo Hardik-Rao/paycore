@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Accounts - PayCore</title>
+<style>body{font-family:system-ui,sans-serif;margin:2rem;background:#0f172a;color:#e2e8f0}table{width:100%;border-collapse:collapse}th,td{padding:.5rem;border-bottom:1px solid #334155}a{color:#38bdf8}</style>
+</head>
+<body>
+<a href="/admin">? Back</a>
+<h1>Accounts</h1>
+<table>
+<tr><th>VPA</th><th>Holder</th><th>Type</th><th>Active</th></tr>
+<tr th:each="a : ${accounts}">
+<td th:text="${a.vpa}"></td><td th:text="${a.accountHolder}"></td>
+<td th:text="${a.accountType}"></td><td th:text="${a.active}"></td>
+</tr>
+</table>
+</body></html>

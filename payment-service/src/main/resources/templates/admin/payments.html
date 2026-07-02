@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Payments - PayCore</title>
+<style>body{font-family:system-ui,sans-serif;margin:2rem;background:#0f172a;color:#e2e8f0}table{width:100%;border-collapse:collapse}th,td{padding:.5rem;border-bottom:1px solid #334155}a{color:#38bdf8}</style>
+</head>
+<body>
+<a href="/admin">? Back</a>
+<h1>Payments</h1>
+<table>
+<tr><th>ID</th><th>Payer</th><th>Payee</th><th>Amount</th><th>Status</th><th>Time</th></tr>
+<tr th:each="p : ${payments}">
+<td><a th:href="@{/admin/payments/{id}(id=${p.id})}" th:text="${#strings.abbreviate(p.id.toString(),13)}">id</a></td>
+<td th:text="${p.payerVpa}"></td><td th:text="${p.payeeVpa}"></td>
+<td th:text="${p.amount}"></td><td th:text="${p.status}"></td><td th:text="${p.initiatedAt}"></td>
+</tr>
+</table>
+</body></html>

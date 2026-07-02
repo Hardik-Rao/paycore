@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: payment-service
+          uri: ${PAYMENT_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/v1/payments/**,/api/v1/accounts/**,/admin/**
+        - id: ledger-service
+          uri: ${LEDGER_SERVICE_URL:http://localhost:8082}
+          predicates:
+            - Path=/api/v1/ledger/**
+        - id: fraud-service
+          uri: ${FRAUD_SERVICE_URL:http://localhost:8083}
+          predicates:
+            - Path=/api/v1/fraud/**
+        - id: notification-service
+          uri: ${NOTIFICATION_SERVICE_URL:http://localhost:8084}
+          predicates:
+            - Path=/api/v1/webhooks/**
+        - id: reconciliation-service
+          uri: ${RECONCILIATION_SERVICE_URL:http://localhost:8085}
+          predicates:
+            - Path=/api/v1/reconciliation/**,/api/v1/disputes/**
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+paycore:
+  jwt:
+    secret: ${JWT_SECRET:paycore-dev-secret-key-change-in-production-32chars}
+  rate-limit:
+    payment: 100
+    admin: 20
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PayCore Admin</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 2rem; background: #0f172a; color: #e2e8f0; }
+        a { color: #38bdf8; }
+        .card { background: #1e293b; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.5rem; border-bottom: 1px solid #334155; text-align: left; }
+        nav a { margin-right: 1rem; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/admin">Overview</a>
+    <a href="/admin/payments">Payments</a>
+    <a href="/admin/accounts">Accounts</a>
+</nav>
+<h1>PayCore Admin</h1>
+<div class="card">
+    <h2>Last 24h Stats</h2>
+    <p>Total: <span th:text="${stats.totalPayments()}">0</span></p>
+    <p>Success Rate: <span th:text="${stats.successRate()}">0</span>%</p>
+    <p>Volume: ?<span th:text="${stats.totalVolume()}">0</span></p>
+</div>
+<div class="card">
+    <h2>Recent Transactions</h2>
+    <table>
+        <tr><th>ID</th><th>Payer</th><th>Payee</th><th>Amount</th><th>Status</th></tr>
+        <tr th:each="p : ${recent}">
+            <td><a th:href="@{/admin/payments/{id}(id=${p.id})}" th:text="${#strings.abbreviate(p.id.toString(),13)}">id</a></td>
+            <td th:text="${p.payerVpa}">payer</td>
+            <td th:text="${p.payeeVpa}">payee</td>
+            <td th:text="${p.amount}">0</td>
+            <td th:text="${p.status}">status</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

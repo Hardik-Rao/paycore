@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Payment Detail - PayCore</title>
+<style>body{font-family:system-ui,sans-serif;margin:2rem;background:#0f172a;color:#e2e8f0}a{color:#38bdf8}.card{background:#1e293b;padding:1rem;border-radius:8px;margin:1rem 0}</style>
+</head>
+<body>
+<a href="/admin/payments">? Back</a>
+<h1>Payment Detail</h1>
+<div class="card">
+<p>ID: <span th:text="${payment.id()}"></span></p>
+<p>Payer: <span th:text="${payment.payerVpa()}"></span> ? Payee: <span th:text="${payment.payeeVpa()}"></span></p>
+<p>Amount: ?<span th:text="${payment.amount()}"></span> | Status: <span th:text="${payment.status()}"></span></p>
+</div>
+<h2>Audit Trail</h2>
+<div class="card" th:each="a : ${audit}">
+<span th:text="${a.oldStatus()}"></span> ? <span th:text="${a.newStatus()}"></span>
+— <span th:text="${a.reason()}"></span> at <span th:text="${a.changedAt()}"></span>
+</div>
+</body></html>
