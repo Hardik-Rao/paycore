@@ -1,6 +1,6 @@
 # PayCore
 
-Production-grade, UPI-inspired payment infrastructure — **Java 21 + Spring Boot 3.3** microservices.
+Production-grade, UPI-inspired payment infrastructure ï¿½ **Java 21 + Spring Boot 3.3** microservices.
 
 ## Services
 
@@ -15,7 +15,7 @@ Production-grade, UPI-inspired payment infrastructure — **Java 21 + Spring Boot 
 
 ## Stack
 
-PostgreSQL · Redis · Apache Kafka · Flyway · Docker · Prometheus · Grafana
+PostgreSQL ï¿½ Redis ï¿½ Apache Kafka ï¿½ Flyway ï¿½ Docker ï¿½ Prometheus ï¿½ Grafana
 
 ## Quick Start
 
@@ -28,8 +28,8 @@ docker compose up --build
 ```
 
 - **Admin Dashboard:** http://localhost:8081/admin
-- **Prometheus:** http://localhost:9090
-- **Grafana:** http://localhost:3000 (admin/admin)
+- **Prometheus:** http://localhost:9091
+- **Grafana:** http://localhost:3001 (admin/admin)
 
 ## Test Flow (direct to payment service)
 

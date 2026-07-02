@@ -33,4 +33,13 @@ subprojects {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
+
+    if (name != "common") {
+        tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+            archiveFileName.set("${project.name}.jar")
+        }
+        tasks.named<Jar>("jar") {
+            enabled = false
+        }
+    }
 }

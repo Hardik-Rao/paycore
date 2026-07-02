@@ -14,6 +14,6 @@
 <h2>Audit Trail</h2>
 <div class="card" th:each="a : ${audit}">
 <span th:text="${a.oldStatus()}"></span> ? <span th:text="${a.newStatus()}"></span>
-— <span th:text="${a.reason()}"></span> at <span th:text="${a.changedAt()}"></span>
+ï¿½ <span th:text="${a.reason()}"></span> at <span th:text="${a.changedAt()}"></span>
 </div>
 </body></html>
