@@ -100,6 +100,9 @@ public class PaymentService {
     }
 
     public Page<PaymentResponse> list(String payer, PaymentStatus status, Instant from, Instant to, Pageable pageable) {
+        if (payer == null && status == null && from == null && to == null) {
+            return paymentRepository.findAll(pageable).map(this::toResponse);
+        }
         return paymentRepository.findWithFilters(payer, status, from, to, pageable).map(this::toResponse);
     }
 

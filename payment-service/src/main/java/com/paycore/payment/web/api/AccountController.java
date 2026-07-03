@@ -22,6 +22,11 @@ public class AccountController {
         return accountService.create(request);
     }
 
+    @GetMapping
+    public List<AccountResponse> list() {
+        return accountService.listAll();
+    }
+
     @GetMapping("/{vpa}")
     public AccountResponse get(@PathVariable String vpa) {
         return accountService.getByVpa(vpa);

@@ -37,6 +37,10 @@ public class AccountService {
         return toResponse(accountRepository.save(account));
     }
 
+    public List<AccountResponse> listAll() {
+        return accountRepository.findAll().stream().map(this::toResponse).toList();
+    }
+
     public AccountResponse getByVpa(String vpa) {
         return accountRepository.findByVpa(vpa)
                 .map(this::toResponse)
@@ -51,11 +55,11 @@ public class AccountService {
         return toResponse(accountRepository.save(account));
     }
 
-    public List<com.paycore.payment.dto.PaymentResponse> paymentsForVpa(String vpa) {
+    public List<PaymentResponse> paymentsForVpa(String vpa) {
         accountRepository.findByVpa(vpa)
                 .orElseThrow(() -> new PaymentException("NOT_FOUND", "Account not found"));
         return paymentRepository.findByPayerVpaOrPayeeVpa(vpa, vpa).stream()
-                .map(p -> new com.paycore.payment.dto.PaymentResponse(
+                .map(p -> new PaymentResponse(
                         p.getId(), p.getIdempotencyKey(), p.getPayerVpa(), p.getPayeeVpa(),
                         p.getAmount(), p.getCurrency(), p.getStatus(), p.getFraudScore(),
                         p.getFailureReason(), p.getReversalReason(), p.getMetadata(),

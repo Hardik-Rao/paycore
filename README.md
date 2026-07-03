@@ -17,7 +17,19 @@ Production-grade, UPI-inspired payment infrastructure � **Java 21 + Spring Boo
 
 PostgreSQL � Redis � Apache Kafka � Flyway � Docker � Prometheus � Grafana
 
-## Quick Start
+## Frontend Dashboard
+
+React dashboard with **Midnight Pulse** theme (black + electric blue).
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open **http://localhost:5173**
+
+## Quick Start (Backend)
 
 ```bash
 # Build all services

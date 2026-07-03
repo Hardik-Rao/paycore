@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #080b12;
+  --color-obsidian: #0f1623;
+  --color-slate-deep: #151c2c;
+  --color-steel: #1e2a3f;
+  --color-electric: #00b4ff;
+  --color-shine: #38cfff;
+  --color-royal: #2563eb;
+  --color-pulse: #22d3ee;
+  --color-heading: #f8fafc;
+  --color-body: #cbd5e1;
+  --color-muted: #64748b;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-reversed: #a78bfa;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-void);
+    color: var(--color-body);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glow-border {
+    border: 1px solid rgba(0, 180, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 180, 255, 0.08);
+  }
+
+  .glow-border:hover {
+    border-color: rgba(0, 180, 255, 0.35);
+    box-shadow: 0 8px 40px rgba(0, 180, 255, 0.15);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #00b4ff 0%, #2563eb 100%);
+    box-shadow: 0 0 24px rgba(0, 180, 255, 0.35);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 32px rgba(0, 180, 255, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .accent-line {
+    background: linear-gradient(180deg, #22d3ee, #2563eb, transparent);
+  }
+}
